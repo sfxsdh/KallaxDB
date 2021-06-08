@@ -1,5 +1,5 @@
 # KallaxDB
-KallaxDB is a table-less hash-based key-value store developed for storage hardware with built-in transparent compression. It saves each key-value pair to a specific location/page of a storage device according to the hashed key and keeps those overflow key-value pairs in a temporary store. Also, it performs background rehashing when the space allocated for database is not large enough. The source code of KallaxDB uses KVell as a reference.
+KallaxDB is a table-less hash-based key-value store developed for storage hardware with built-in transparent compression. It saves each key-value pair to a specific location/page of a storage device according to the hashed key and keeps those overflow key-value pairs in a temporary store. Also, it performs background rehashing when the space allocated for database is not large enough. The source code of KallaxDB uses KVell as a reference (https://github.com/BLepers/KVell). 
 
 # Environment set up
 * Use `-o discard` option when mounting a storage device.

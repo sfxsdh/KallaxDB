@@ -1,0 +1,83 @@
+bench.o: bench.c headers.h options.h utils.h stats.h items.h pagecache.h \
+ indexes/btree.h indexes/memory-item.h ioengine.h slab.h wal_rbtree.h \
+ slabworker.h xxhash.h workload-common.h random.h rocks_meta.h
+benchcomponents.o: benchcomponents.c headers.h options.h utils.h stats.h \
+ items.h pagecache.h indexes/btree.h indexes/memory-item.h ioengine.h \
+ slab.h wal_rbtree.h slabworker.h xxhash.h workload-common.h random.h \
+ rocks_meta.h
+in-memory-index-btree.o: in-memory-index-btree.c headers.h options.h \
+ utils.h stats.h items.h pagecache.h indexes/btree.h \
+ indexes/memory-item.h ioengine.h slab.h wal_rbtree.h slabworker.h \
+ xxhash.h workload-common.h random.h rocks_meta.h
+ioengine.o: ioengine.c headers.h options.h utils.h stats.h items.h \
+ pagecache.h indexes/btree.h indexes/memory-item.h ioengine.h slab.h \
+ wal_rbtree.h slabworker.h xxhash.h workload-common.h random.h \
+ rocks_meta.h
+main.o: main.c headers.h options.h utils.h stats.h items.h pagecache.h \
+ indexes/btree.h indexes/memory-item.h ioengine.h slab.h wal_rbtree.h \
+ slabworker.h xxhash.h workload-common.h random.h rocks_meta.h
+pagecache.o: pagecache.c headers.h options.h utils.h stats.h items.h \
+ pagecache.h indexes/btree.h indexes/memory-item.h ioengine.h slab.h \
+ wal_rbtree.h slabworker.h xxhash.h workload-common.h random.h \
+ rocks_meta.h
+random.o: random.c headers.h options.h utils.h stats.h items.h \
+ pagecache.h indexes/btree.h indexes/memory-item.h ioengine.h slab.h \
+ wal_rbtree.h slabworker.h xxhash.h workload-common.h random.h \
+ rocks_meta.h
+slab.o: slab.c headers.h options.h utils.h stats.h items.h pagecache.h \
+ indexes/btree.h indexes/memory-item.h ioengine.h slab.h wal_rbtree.h \
+ slabworker.h xxhash.h workload-common.h random.h rocks_meta.h
+stats.o: stats.c headers.h options.h utils.h stats.h items.h pagecache.h \
+ indexes/btree.h indexes/memory-item.h ioengine.h slab.h wal_rbtree.h \
+ slabworker.h xxhash.h workload-common.h random.h rocks_meta.h
+test_sample.o: test_sample.c headers.h options.h utils.h stats.h items.h \
+ pagecache.h indexes/btree.h indexes/memory-item.h ioengine.h slab.h \
+ wal_rbtree.h slabworker.h xxhash.h workload-common.h random.h \
+ rocks_meta.h
+utils.o: utils.c headers.h options.h utils.h stats.h items.h pagecache.h \
+ indexes/btree.h indexes/memory-item.h ioengine.h slab.h wal_rbtree.h \
+ slabworker.h xxhash.h workload-common.h random.h rocks_meta.h
+wal_rbtree.o: wal_rbtree.c wal_rbtree.h
+workload-common.o: workload-common.c headers.h options.h utils.h stats.h \
+ items.h pagecache.h indexes/btree.h indexes/memory-item.h ioengine.h \
+ slab.h wal_rbtree.h slabworker.h xxhash.h workload-common.h random.h \
+ rocks_meta.h
+workload-production.o: workload-production.c headers.h options.h utils.h \
+ stats.h items.h pagecache.h indexes/btree.h indexes/memory-item.h \
+ ioengine.h slab.h wal_rbtree.h slabworker.h xxhash.h workload-common.h \
+ random.h rocks_meta.h
+workload-ycsb.o: workload-ycsb.c headers.h options.h utils.h stats.h \
+ items.h pagecache.h indexes/btree.h indexes/memory-item.h ioengine.h \
+ slab.h wal_rbtree.h slabworker.h xxhash.h workload-common.h random.h \
+ rocks_meta.h
+xxhash.o: xxhash.c xxhash.h xxh3.h
+rocks_meta.o: rocks_meta.cc rocks_meta.h items.h headers.h options.h \
+ utils.h stats.h pagecache.h indexes/btree.h indexes/memory-item.h \
+ ioengine.h slab.h wal_rbtree.h slabworker.h xxhash.h workload-common.h \
+ random.h include/rocksdb/db.h include/rocksdb/iterator.h \
+ include/rocksdb/cleanable.h include/rocksdb/rocksdb_namespace.h \
+ include/rocksdb/slice.h include/rocksdb/status.h \
+ include/rocksdb/listener.h include/rocksdb/compaction_job_stats.h \
+ include/rocksdb/compression_type.h include/rocksdb/table_properties.h \
+ include/rocksdb/types.h include/rocksdb/metadata.h \
+ include/rocksdb/options.h include/rocksdb/advanced_options.h \
+ include/rocksdb/memtablerep.h include/rocksdb/universal_compaction.h \
+ include/rocksdb/comparator.h include/rocksdb/env.h \
+ include/rocksdb/thread_status.h include/rocksdb/file_checksum.h \
+ include/rocksdb/sst_partitioner.h include/rocksdb/version.h \
+ include/rocksdb/write_buffer_manager.h include/rocksdb/cache.h \
+ include/rocksdb/memory_allocator.h include/rocksdb/statistics.h \
+ include/rocksdb/snapshot.h include/rocksdb/sst_file_writer.h \
+ include/rocksdb/transaction_log.h include/rocksdb/write_batch.h \
+ include/rocksdb/write_batch_base.h
+slabworker.o: slabworker.cc headers.h options.h utils.h stats.h items.h \
+ pagecache.h indexes/btree.h indexes/memory-item.h ioengine.h slab.h \
+ wal_rbtree.h slabworker.h xxhash.h workload-common.h random.h \
+ rocks_meta.h
+indexes/art.o: indexes/art.c indexes/art.h indexes/memory-item.h
+indexes/rax.o: indexes/rax.c indexes/rax.h indexes/memory-item.h \
+ indexes/rax_malloc.h
+indexes/rbtree.o: indexes/rbtree.c indexes/rbtree.h indexes/memory-item.h
+indexes/btree.o: indexes/btree.cc indexes/cpp-btree/btree_map.h \
+ indexes/cpp-btree/btree.h indexes/cpp-btree/btree_container.h \
+ indexes/btree.h indexes/memory-item.h

@@ -1,0 +1,35 @@
+CC=gcc  #If you use GCC, add -fno-strict-aliasing to the CFLAGS because the Google BTree does weird stuff
+CFLAGS=-Wall -O0 -ggdb3 -ggdb -fPIC 
+#CFLAGS=-Wall -O0 -ggdb3 -ggdb
+CXX=g++
+CXXFLAGS= ${CFLAGS} -std=c++11 -DUSE_RBTREE_WAL -I./include
+
+#LDFLAGS=-shared
+LDLIBS=-lm -lpthread -lstdc++ -lrocksdb
+
+#INDEXES_OBJ=indexes/btree.o 
+MAIN_OBJ=main.o wal_rbtree.o slab.o ioengine.o pagecache.o stats.o xxhash.o random.o slabworker.o workload-common.o workload-ycsb.o workload-production.o utils.o  rocks_meta.o ${INDEXES_OBJ}
+
+#TARGET_LIB=libkallax.so
+#OBJS=wal_rbtree.o slab.o ioengine.o pagecache.o stats.o xxhash.o random.o slabworker.o workload-common.o workload-ycsb.o workload-production.o utils.o  rocks_meta.o ${INDEXES_OBJ}
+
+.PHONY: all clean
+
+all: makefile.dep main
+#${TARGET_LIB}
+
+makefile.dep: *.cc *.[Cch] indexes/*.[ch] indexes/*.cc
+	for i in *.[Cc]; do ${CC} -MM "$${i}" ${CFLAGS}; done > $@
+	for i in *.cc; do ${CXX} -MM "$${i}" -MT $${i%.cc}.o ${CXXFLAGS}; done >> $@
+	for i in indexes/*.c; do ${CC} -MM "$${i}" -MT $${i%.c}.o ${CFLAGS}; done >> $@
+	for i in indexes/*.cc; do ${CXX} -MM "$${i}" -MT $${i%.cc}.o ${CXXFLAGS}; done >> $@
+	#find ./ -type f \( -iname \*.c -o -iname \*.cc \) | parallel clang -MM "{}" -MT "{.}".o > makefile.dep #If you find that the lines above take too long...
+
+-include makefile.dep
+
+main: $(MAIN_OBJ)
+#${TARGET_LIB}: $(OBJS)
+#	${CXX} ${LDFLAGS} -o $@ $^ 
+
+clean:
+	rm -f *.o indexes/*.o main ${TARGET_LIB}
